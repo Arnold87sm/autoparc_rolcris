@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Car</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    body {
+      font-family: 'Arial, sans-serif';
+      background-color: #1e1e1e;
+      color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #2d2d2d;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+      color: #fff;
+    }
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 30px auto;
+      background-color: #2d2d2d;
+      padding: 30px;
+      border-radius: 8px;
+    }
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .form-group {
+      flex: 1 1 calc(33.333% - 20px);
+      display: flex;
+      flex-direction: column;
+    }
+    .form-group label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #ddd;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 10px;
+      background-color: #3c3c3c;
+      border: 1px solid #555;
+      border-radius: 5px;
+      color: #fff;
+    }
+    .form-group textarea {
+      resize: vertical;
+    }
+    form button {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      width: 100%;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    form button:hover {
+      background-color: #45a049;
+    }
+    .cancel-link {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      color: #e74c3c;
+      text-decoration: none;
+    }
+    .cancel-link:hover {
+      text-decoration: underline;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 800px) {
+      .form-group {
+        flex: 1 1 calc(50% - 20px);
+      }
+    }
+    @media (max-width: 500px) {
+      .form-group {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Edit Car</h1>
+  </header>
+  <div class="container">
+    <form action="/admin/edit-car/<%= car.id %>" method="POST">
+      <div class="form-group">
+        <label for="type">Type:</label>
+        <input type="text" name="type" value="<%= car.type %>" required>
+      </div>
+      <div class="form-group">
+        <label for="detalii">Detalii:</label>
+        <input type="text" name="detalii" value="<%= car.detalii %>">
+      </div>
+      <div class="form-group">
+        <label for="marca">Marca:</label>
+        <input type="text" name="marca" value="<%= car.marca %>" required>
+      </div>
+      <div class="form-group">
+        <label for="model">Model:</label>
+        <input type="text" name="model" value="<%= car.model %>" required>
+      </div>
+      <div class="form-group">
+        <label for="an_fabricatie">An fabricație:</label>
+        <input type="number" name="an_fabricatie" value="<%= car.an_fabricatie %>" required>
+      </div>
+      <div class="form-group">
+        <label for="combustibil">Combustibil:</label>
+        <input type="text" name="combustibil" value="<%= car.combustibil %>" required>
+      </div>
+      <div class="form-group">
+        <label for="capacitate_cilindrica">Capacitate cilindrică:</label>
+        <input type="number" name="capacitate_cilindrica" value="<%= car.capacitate_cilindrica %>" required>
+      </div>
+      <div class="form-group">
+        <label for="putere">Putere (CP):</label>
+        <input type="number" name="putere" value="<%= car.putere %>" required>
+      </div>
+      <div class="form-group">
+        <label for="cutie_viteza">Cutie de viteză:</label>
+        <input type="text" name="cutie_viteza" value="<%= car.cutie_viteza %>" required>
+      </div>
+      <div class="form-group">
+        <label for="kilometrii_rulati">Kilometrii rulați:</label>
+        <input type="text" name="kilometrii_rulati" value="<%= car.kilometrii_rulati %>" required>
+      </div>
+      <div class="form-group">
+        <label for="transmisie">Transmisie:</label>
+        <input type="text" name="transmisie" value="<%= car.transmisie %>" required>
+      </div>
+      <div class="form-group">
+        <label for="caroserie">Caroserie:</label>
+        <input type="text" name="caroserie" value="<%= car.caroserie %>" required>
+      </div>
+      <div class="form-group">
+        <label for="numar_portiere">Număr de portiere:</label>
+        <input type="number" name="numar_portiere" value="<%= car.numar_portiere %>" required>
+      </div>
+      <div class="form-group">
+        <label for="culoare">Culoare:</label>
+        <input type="text" name="culoare" value="<%= car.culoare %>" required>
+      </div>
+      <div class="form-group">
+        <label for="norma_poluare">Norma de poluare:</label>
+        <input type="text" name="norma_poluare" value="<%= car.norma_poluare %>" required>
+      </div>
+      <div class="form-group">
+        <label for="vin">VIN:</label>
+        <input type="text" name="vin" value="<%= car.vin %>" required>
+      </div>
+      <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="number" name="price" step="0.01" value="<%= car.price %>" required>
+      </div>
+      <div class="form-group" style="flex: 1 1 100%;">
+        <label for="description">Description:</label>
+        <textarea name="description" rows="4" required><%= car.description %></textarea>
+      </div>
+      <button type="submit">Save Changes</button>
+    </form>
+    <a href="/admin" class="cancel-link">Cancel</a>
+  </div>
+</body>
+</html>

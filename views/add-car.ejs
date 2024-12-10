@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add New Car</title>
+  <style>
+    body {
+      background-color: #111;
+      font-family: Arial, sans-serif;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    h1 {
+      text-align: center;
+      color: #b22222;
+    }
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+    input, textarea, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #b22222;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ff4500;
+    }
+  </style>
+</head>
+<body>
+  <h1>Add New Car</h1>
+  <form action="/admin/add-car" method="post" enctype="multipart/form-data">
+    <input type="text" name="type" placeholder="Type">
+    <input type="text" name="detalii" placeholder="Detalii">
+    <input type="text" name="marca" placeholder="Marca" required>
+    <input type="text" name="model" placeholder="Model" required>
+    <input type="number" name="an_fabricatie" placeholder="An fabricație" required>
+    <input type="text" name="combustibil" placeholder="Combustibil" required>
+    <input type="number" name="capacitate_cilindrica" placeholder="Capacitate cilindrică" required>
+    <input type="number" name="putere" placeholder="Putere (CP)" required>
+    <input type="text" name="cutie_viteza" placeholder="Cutie de viteză" required>
+    <input type="text" name="kilometrii_rulati" placeholder="Kilometrii rulați" required>
+    <input type="text" name="transmisie" placeholder="Transmisie" required>
+    <input type="text" name="caroserie" placeholder="Caroserie" required>
+    <input type="number" name="numar_portiere" placeholder="Număr de portiere" required>
+    <input type="text" name="culoare" placeholder="Culoare" required>
+    <input type="text" name="norma_poluare" placeholder="Norma de poluare" required>
+    <input type="text" name="vin" placeholder="VIN" required>
+    <input type="number" name="price" step="0.01" placeholder="Price" required>
+    <textarea name="description" placeholder="Description"></textarea>
+    <input type="file" name="carImages" multiple>
+    <button type="submit">Add Car</button>
+  </form>
+</body>
+</html>

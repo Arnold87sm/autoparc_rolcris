@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Specific styles for this page */
+    .coming-soon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh; /* Match the height of main content from styles.css */
+      background-color: #000; /* Black background */
+    }
+    
+    .coming-soon h1 {
+      color: #fff; /* White text */
+      font-size: 4em; /* Big text */
+      text-align: center;
+    }
+    .info-bar{
+      background-color: #111; /* Dark background to match your theme */
+      color: #fff; /* Light text for contrast */
+      padding: 10px;
+      display: flex;
+      justify-content: space-evenly; /* Space out the two items */
+      align-items: center;
+    }
+    .info-item {
+      margin: 0 10px;
+      font-size: 1rem; /* Adjust the size as needed */
+    }
+    .info-item i {
+      margin-right: 5px; /* Space between the icon and text */
+    }
+  </style>
+</head>
+<body>
+  <div class="info-bar">
+    <div class="info-item">
+      <i class="fas fa-phone"></i>info: +40 123 456 789
+    </div>
+    <div class="info-item">
+      <i class="fas fa-money-bill-wave"></i>Finantare: +40 770 187 601
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">Acasă</a></li>
+        <li><a href="/masini-de-vanzare">Mașini de vânzare</a></li>
+        <li><a href="/despre-noi">Despre noi</a></li>
+        <li><a href="/finantare">Finanțare</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/profesional">Profesional</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="coming-soon">
+    <h1>COMING SOON</h1>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <p>© 2025 Autoprc RolCris. Toate drepturile rezervate.</p>
+      <nav>
+        <ul>
+          <li><a href="/">Acasă</a></li>
+          <li><a href="/masini-de-vanzare">Mașini de vânzare</a></li>
+          <li><a href="/despre-noi">Despre noi</a></li>
+          <li><a href="/finantare">Finanțare</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/profesional">Profesional</a></li>
+        </ul>
+      </nav>
+      <div class="finance-form">
+        <h3>Finanțare</h3>
+        <form action="/finantare" method="POST">
+          <input type="text" name="name" placeholder="Nume" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="tel" name="phone" placeholder="Telefon" required>
+          <button type="submit">Trimite</button>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Buttons -->
+  <a href="https://wa.me/your-number" class="floating-btn whatsapp" target="_blank">WhatsApp</a>
+  <a href="/finantare" class="floating-btn finantare">Finanțare</a>
+
+  <!-- Include JS files -->
+  <script src="/js/main.js"></script>
+</body>
+</html>

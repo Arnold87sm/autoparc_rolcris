@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/styles.css">
+  <title><%= car.marca %> <%= car.model %> <%= car.an_fabricatie %></title>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">Acasă</a></li>
+        <li><a href="/masini-de-vanzare">Mașini de Vânzare</a></li>
+        <li><a href="/finantare">Finanțare</a></li>
+        <li><a href="/desprenoi">Despre Noi</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/profesional">Profesional</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="car-detail-container">
+      <!-- Left column: Gallery and main image -->
+      <div class="car-gallery-section">
+        <a href="<%= images[0]?.image_path %>" id="mainImageLink" target="_blank">
+          <img src="<%= images[0]?.image_path %>" alt="<%= car.marca %> <%= car.model %>" class="main-image">
+        </a>
+        <div class="thumbnail-gallery">
+          <% images.forEach((image, index) => { %>
+            <img src="<%= image.image_path %>" alt="<%= car.marca %> <%= car.model %>" class="thumbnail" onclick="changeImage('<%= image.image_path %>')">
+          <% }) %>
+        </div>
+      </div>
+
+      <!-- Right column: Car Details, Social Media, and Pricing -->
+      <div class="car-info-section">
+        <h1><%= car.marca %> <%= car.model %> <%= car.capacitate_cilindrica %> cm³ <%= car.combustibil %> <%= car.putere %> CP An <%= car.an_fabricatie %></h1>
+        <p class="price-tag">€<%= car.price %></p>
+
+        <!-- Social Media Share Buttons -->
+        <div class="social-share-buttons">
+          <a href="#" class="share-button facebook">Facebook</a>
+          <a href="#" class="share-button whatsapp">WhatsApp</a>
+          <a href="#" class="share-button email">Email</a>
+        </div>
+
+        <!-- Car Details Table -->
+        <section class="car-details-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Detail</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Marca</td><td><%= car.marca %></td></tr>
+              <tr><td>Model</td><td><%= car.model %></td></tr>
+              <tr><td>An fabricație</td><td><%= car.an_fabricatie %></td></tr>
+              <tr><td>Combustibil</td><td><%= car.combustibil %></td></tr>
+              <tr><td>Capacitate cilindrică</td><td><%= car.capacitate_cilindrica %> cm³</td></tr>
+              <tr><td>Putere</td><td><%= car.putere %> CP</td></tr>
+              <tr><td>Cutie de viteză</td><td><%= car.cutie_viteza %></td></tr>
+              <tr><td>Kilometrii rulați</td><td><%= car.kilometrii_rulati %></td></tr>
+              <tr><td>Transmisie</td><td><%= car.transmisie %></td></tr>
+              <tr><td>Caroserie</td><td><%= car.caroserie %></td></tr>
+              <tr><td>Număr de portiere</td><td><%= car.numar_portiere %></td></tr>
+              <tr><td>Culoare</td><td><%= car.culoare %></td></tr>
+              <tr><td>Norma de poluare</td><td><%= car.norma_poluare %></td></tr>
+              <tr><td>VIN</td><td><%= car.vin %></td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+
+    <!-- Dotări Section -->
+    <section class="car-features">
+      <h2>Dotări</h2>
+      <ul>
+        <li>Computer bord</li>
+        <li>Servodirecție</li>
+        <li>ABS</li>
+        <li>Tempomat</li>
+        <!-- Add more features as needed -->
+      </ul>
+    </section>
+
+    <a href="/masini-de-vanzare" class="back-to-listing">Înapoi la Mașini de Vânzare</a>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Autoprc RolCris. Toate drepturile rezervate.</p>
+  </footer>
+
+  <script>
+    function changeImage(imagePath) {
+      document.querySelector('.main-image').src = imagePath;
+      document.querySelector('#mainImageLink').href = imagePath; // Update link to open full-size image
+    }
+  </script>
+
+  <style>
+    /* Styling for car detail page */
+
+    body {
+      background-color: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    header nav ul {
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+      background-color: #333;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      padding: 10px;
+    }
+
+    .car-detail-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      padding: 20px;
+    }
+
+    .car-gallery-section {
+      flex: 1;
+      max-width: 60%;
+      text-align: center;
+    }
+
+    .main-image {
+      width: 100%;
+      max-width: 700px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+    }
+
+    .thumbnail-gallery {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .thumbnail {
+      width: 100px;
+      height: 80px;
+      cursor: pointer;
+      object-fit: cover;
+      border: 2px solid #b22222;
+      border-radius: 4px;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .thumbnail:hover {
+      transform: scale(1.1);
+      border-color: #ff4500;
+    }
+
+    .car-info-section {
+      flex: 1;
+      max-width: 35%;
+    }
+
+    .price-tag {
+      font-size: 28px;
+      font-weight: bold;
+      color: #ff4500;
+      margin-bottom: 20px;
+    }
+
+    .social-share-buttons {
+      margin: 15px 0;
+    }
+
+    .share-button {
+      display: inline-block;
+      margin: 5px;
+      padding: 10px 15px;
+      color: #fff;
+      background-color: #b22222;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .car-details-table {
+      width: 100%;
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #444;
+    }
+
+    th {
+      background-color: #222;
+    }
+
+    .car-features ul {
+      list-style: none;
+      padding-left: 0;
+      columns: 2;
+      margin: 20px;
+    }
+
+    .car-features li {
+      padding: 5px;
+    }
+
+    .back-to-listing {
+      display: block;
+      text-align: center;
+      margin: 20px 0;
+      color: #ff4500;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #222;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .car-detail-container {
+        flex-direction: column;
+      }
+
+      .car-gallery-section, .car-info-section {
+        max-width: 100%;
+      }
+
+      .thumbnail {
+        width: 80px;
+        height: 60px;
+      }
+    }
+  </style>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Autoprc RolCris</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+
+  <div class="info-bar">
+    <div class="info-item">
+      <i class="fas fa-phone"></i>info: +40 123 456 789
+    </div>
+    <div class="info-item">
+      <i class="fas fa-money-bill-wave"></i>Finantare: +40 770 187 601
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">Acasă</a></li>
+        <li><a href="/masini-de-vanzare">Mașini de Vânzare</a></li>
+        <li><a href="/despre-noi">Despre noi</a></li>
+        <li><a href="/finantare">Finanțare</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/profesional">Profesional</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section class="intro">
+      <div class="intro-text">
+        <h1>Autoprc RolCris</h1>
+        <p>Bine ați venit la Autoprc RolCris!</p>
+      </div>
+      <div class="intro-form">
+        <h2>Completează pentru Finanțare</h2>
+        <form action="/contact" method="POST">
+          <input type="text" name="name" placeholder="Nume" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="tel" name="phone" placeholder="Telefon" required>
+          <button type="submit">Trimite</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="search-form">
+        <form action="/search" method="GET">
+          <input type="text" name="make" placeholder="Marcă">
+          <input type="text" name="model" placeholder="Model">
+          <!-- Additional search fields -->
+          <button type="submit">Caută</button>
+        </form>
+    </section>
+
+<!-- Cars Display -->
+<section class="cars-display">
+  <h2>Mașini Disponibile</h2>
+  <div class="cars-grid" id="carsGrid">
+    <% cars.forEach(car => { %>
+      <div class="car-item">
+        <img src="<%= car.image_path %>" alt="<%= car.marca %> <%= car.model %>" class="car-image">
+        <div class="car-details">
+          <h3><%= car.marca %> <%= car.model %></h3>
+          <p><%= car.capacitate_cilindrica %> cm³, <%= car.combustibil %>, <%= car.putere %> CP, <%= car.an_fabricatie %> <span id="price-tag"> Preț: €<%= car.price %></span></p>
+          <a href="/car/<%= car.id %>" class="view-details">Vezi Detalii</a>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+</section>
+
+<style>
+  .info-bar {
+    background-color: #111; /* Dark background to match your theme */
+    color: #fff; /* Light text for contrast */
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly; /* Space out the two items */
+    align-items: center;
+  }
+
+  .info-item {
+    margin: 0 10px;
+    font-size: 1rem; /* Adjust the size as needed */
+  }
+
+  .info-item i {
+    margin-right: 5px; /* Space between the icon and text */
+  }
+
+  #price-tag{
+    color: #ff4500;
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+  }
+  .cars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 25px;
+    margin: 20px;
+  }
+
+  .car-item {
+    background: rgba(50, 50, 50, 0.7); /* Dark grey with 70% transparency */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .car-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+  }
+
+  .car-image {
+    width: 100%;
+    height: 400px; /* Increased height for larger images */
+    border-radius: 5px;
+    object-fit: cover; /* Ensure the image is uniformly cropped */
+  }
+
+  .car-details {
+    margin-top: 10px;
+  }
+
+  .car-details p {
+    font-size: 16px;
+    color: #fff;
+  }
+
+  .view-details {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 20px;
+    background-color: #b22222; /* Firebrick Red */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  .view-details:hover {
+    background-color: #ff4500; /* Orange Red */
+  }
+
+  @media (max-width: 768px) {
+    .cars-grid {
+      grid-template-columns: 1fr;
+    }
+    .info-bar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .info-item {
+      margin-bottom: 5px;
+    }
+  }
+</style>
+
+
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2023 Autoprc RolCris. Toate drepturile rezervate.</p>
+      <nav>
+        <ul>
+          <li><a href="/">Acasă</a></li>
+          <li><a href="/masini-de-vanzare">Mașini de vânzare</a></li>
+          <li><a href="/despre-noi">Despre noi</a></li>
+          <li><a href="/finantare">Finanțare</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/profesional">Profesional</a></li>
+        </ul>
+      </nav>
+      <div class="finance-form">
+        <h3>Finanțare</h3>
+        <form action="/finantare" method="POST">
+          <input type="text" name="name" placeholder="Nume" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="tel" name="phone" placeholder="Telefon" required>
+          <button type="submit">Trimite</button>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Buttons -->
+  <a href="https://wa.me/your-number" class="floating-btn whatsapp" target="_blank">WhatsApp</a>
+  <a href="/finantare" class="floating-btn finantare">Finanțare</a>
+
+  <!-- Include JS files -->
+  <script src="/js/main.js"></script>
+</body>
+</html>

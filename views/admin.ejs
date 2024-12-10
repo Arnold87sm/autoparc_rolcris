@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <!-- Link to an external CSS file or include styles here -->
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    /* Add your styles here or in your external CSS file */
+    body {
+      font-family: 'Arial, sans-serif';
+      background-color: #000;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #111;
+      color: #ecf0f1;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+      color: #FF4500;
+    }
+    .container {
+      width: 90%;
+      margin: 20px auto;
+    }
+    .add-car-btn {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      background-color: #b22222;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #353535;
+    }
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #34495e;
+      color: #ecf0f1;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+    img {
+      width: 80px;
+      height: auto;
+      border-radius: 5px;
+    }
+    .actions a {
+      margin-right: 10px;
+      color: #b22222;
+      text-decoration: none;
+    }
+    .actions a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 600px) {
+      .actions {
+        display: flex;
+        flex-direction: column;
+      }
+      .actions a {
+        margin-bottom: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Admin Dashboard</h1>
+  </header>
+  <div class="container">
+    <a href="/admin/add-car" class="add-car-btn">Add New Car</a>
+    <table>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Make</th>
+          <th>Model</th>
+          <th>Year</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% cars.forEach(car => { %>
+          <tr>
+            <% if (car.image_path) { %>
+              <td><img src="/images/<%= car.image_path %>" alt="<%= car.marca %> <%= car.model %>"></td>
+            <% } else { %>
+              <td>No Image Available</td>
+            <% } %>
+            <td><%= car.marca %></td>
+            <td><%= car.model %></td>
+            <td><%= car.an_fabricatie %></td>
+            <td>$<%= Number(car.price).toFixed(2) %></td>
+            <td class="actions">
+              <a href="/admin/edit-car/<%= car.id %>">Edit</a>
+              <a href="/admin/delete-car/<%= car.id %>" onclick="return confirm('Are you sure you want to delete this car?')">Delete</a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

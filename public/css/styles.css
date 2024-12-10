@@ -1,0 +1,347 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+  }
+  
+  /* Navigation Bar */
+  nav {
+    background-color: #111; /* Darker black */
+  }
+  
+  main {
+    background-image: url('../images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 85vh;
+  }
+  
+
+  nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav li {
+    flex: 1;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    text-align: center;
+    
+  }
+  
+  nav a:hover {
+    background-color: #b22222; /* Firebrick Red */
+  }
+  
+  /* Main Content */
+  .intro {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+  
+  .intro-text, .intro-form {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .intro-text h1 {
+    color: #b22222; /* Firebrick Red */
+  }
+  
+  .intro-form h2 {
+    color: #b22222;
+  }
+  
+  .intro-form form input, .intro-form form button {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+  }
+  
+  .intro-form form input {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .intro-form form button {
+    background-color: #b22222;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .intro-form form button:hover {
+    background-color: #ff4500; /* Orange Red */
+  }
+
+  .search-form form {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .search-form input, .search-form button {
+    flex: end;
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    background-color: #333333;
+    color: #FFFFFF;
+  }
+  
+  .search-form button {
+    background-color: #B22222;
+    cursor: pointer;
+  }
+  
+  .search-form button:hover {
+    background-color: #FF4500; /* Orange Red */
+  }
+  
+  /* Cars Display */
+.cars-display {
+  padding: 20px;
+}
+
+.cars-display h2 {
+  color: #b22222;
+}
+
+.cars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.car-item {
+  background: rgba(50, 50, 50, 0.7); /* Dark grey with transparency */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.car-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+}
+
+.car-item img {
+  width: 100%;
+  height: 250px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.car-item h3 {
+  color: #ff4500;
+}
+
+.car-item p {
+  color: #ccc; /* Light grey */
+}
+
+.view-details {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #b22222; /* Firebrick Red */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.view-details:hover {
+  background-color: #ff4500; /* Orange Red */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cars-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+  
+  /* Footer */
+  footer {
+    background-color: #111;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .footer-content nav {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .footer-content nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-content nav li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-content nav a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .footer-content .finance-form {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .finance-form h3 {
+    color: #b22222;
+  }
+  
+  .finance-form form input, .finance-form form button {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+  }
+  
+  .finance-form form input {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .finance-form form button {
+    background-color: #b22222;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .finance-form form button:hover {
+    background-color: #ff4500;
+  }
+  
+  /* Floating Buttons */
+  .floating-btn {
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    background-color: #b22222;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    z-index: 100;
+  }
+  
+  .floating-btn.finantare {
+    bottom: 130px;
+    background-color: #ff4500;
+  }
+  
+  .floating-btn:hover {
+    opacity: 0.8;
+  }
+  /* public/css/styles.css */
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1, h2 {
+  color: #333;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  margin-bottom: 20px;
+}
+
+img {
+  max-width: 200px;
+}
+
+/* Admin Page Styles */
+.admin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th, .admin-table td {
+  border: 1px solid #333;
+  padding: 10px;
+  text-align: left;
+}
+
+.admin-table th {
+  background-color: #111;
+  color: #fff;
+}
+
+.admin-table tr:nth-child(even) {
+  background-color: #333;
+}
+
+.admin-table img {
+  max-width: 100px;
+  height: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .intro {
+    flex-direction: column;
+  }
+
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav li {
+    text-align: center;
+  }
+
+  .footer-content {
+    flex-direction: column;
+  }
+
+  .floating-btn {
+    bottom: 90px;
+    right: 10px;
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .floating-btn.finantare {
+    bottom: 150px;
+  }
+}
