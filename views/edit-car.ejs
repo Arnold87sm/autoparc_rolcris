@@ -101,11 +101,11 @@
   <div class="container">
     <form action="/admin/edit-car/<%= car.id %>" method="POST">
       <div class="form-group">
-        <label for="type">Type:</label>
+        <label for="type">Tipul: (SUV, Limuzina, Combi etc)</label>
         <input type="text" name="type" value="<%= car.type %>" required>
       </div>
       <div class="form-group">
-        <label for="detalii">Detalii:</label>
+        <label for="detalii">Detalii Speciale:</label>
         <input type="text" name="detalii" value="<%= car.detalii %>">
       </div>
       <div class="form-group">
@@ -141,7 +141,7 @@
         <input type="text" name="kilometrii_rulati" value="<%= car.kilometrii_rulati %>" required>
       </div>
       <div class="form-group">
-        <label for="transmisie">Transmisie:</label>
+        <label for="transmisie">Tracțiune: (4x4, Fata, Spate)</label>
         <input type="text" name="transmisie" value="<%= car.transmisie %>" required>
       </div>
       <div class="form-group">
@@ -165,14 +165,14 @@
         <input type="text" name="vin" value="<%= car.vin %>" required>
       </div>
       <div class="form-group">
-        <label for="price">Price:</label>
+        <label for="price">Preț:</label>
         <input type="number" name="price" step="0.01" value="<%= car.price %>" required>
       </div>
       <div class="form-group" style="flex: 1 1 100%;">
-        <label for="description">Description:</label>
+        <label for="description">Dotari: (SEPARATE cu VIRGULA ",")</label>
         <textarea name="description" rows="4" required><%= car.description %></textarea>
       </div>
-      <button type="submit">Save Changes</button>
+      <button type="submit">Salvează!</button>
     </form>
     <a href="/admin" class="cancel-link">Cancel</a>
   </div>

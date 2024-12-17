@@ -1,0 +1,20 @@
+<!-- _footer.ejs -->
+<div class="footer-finance-form">
+    <form action="/contact" method="POST">
+        <input type="text" name="name" class="footer-input" placeholder="Numele tău" required>
+        <input type="email" name="email" class="footer-input" placeholder="Adresa de email" required>
+        <input type="text" name="phone" class="footer-input" placeholder="Număr de contact" required>
+        <button type="submit" class="footer-btn">Trimite</button>
+    </form>
+</div>
+<!-- Script to handle success/error alerts -->
+<script>
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has('success')) {
+        alert('SUCCES! Vă mulțumim pentru mesaj! Vă vom contacta în curând!');
+      } else if (urlParams.has('error')) {
+        alert('Something went wrong. Please try again later.');
+      }
+</script>
+
+  

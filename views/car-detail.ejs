@@ -3,22 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/styles.css">
   <title><%= car.marca %> <%= car.model %> <%= car.an_fabricatie %></title>
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
+  <div class="header-container">
+    <div class="info-bar">
+      <div class="info-item">
+        <i class="fas fa-phone"></i>info: +40 123 456 789
+      </div>
+      <div class="info-item">
+        <i class="fas fa-money-bill-wave"></i>Finantare: +40 770 187 601
+      </div>
+    </div>
+  
+    <nav class="main-nav">
+      <picture>
+        <source srcset="/images/logo.webp" type="image/webp">
+        <img src="/images/logo.png" alt="Logo" class="logo">
+      </picture>
+      <button class="burger-menu" aria-label="Menu">☰</button>
+      <ul class="nav-links">
         <li><a href="/">Acasă</a></li>
         <li><a href="/masini-de-vanzare">Mașini de Vânzare</a></li>
+        <li><a href="/despre-noi">Despre noi</a></li>
         <li><a href="/finantare">Finanțare</a></li>
-        <li><a href="/desprenoi">Despre Noi</a></li>
         <li><a href="/contact">Contact</a></li>
         <li><a href="/profesional">Profesional</a></li>
       </ul>
     </nav>
-  </header>
+  </div>
 
   <main>
     <div class="car-detail-container">
@@ -37,14 +51,7 @@
       <!-- Right column: Car Details, Social Media, and Pricing -->
       <div class="car-info-section">
         <h1><%= car.marca %> <%= car.model %> <%= car.capacitate_cilindrica %> cm³ <%= car.combustibil %> <%= car.putere %> CP An <%= car.an_fabricatie %></h1>
-        <p class="price-tag">€<%= car.price %></p>
-
-        <!-- Social Media Share Buttons -->
-        <div class="social-share-buttons">
-          <a href="#" class="share-button facebook">Facebook</a>
-          <a href="#" class="share-button whatsapp">WhatsApp</a>
-          <a href="#" class="share-button email">Email</a>
-        </div>
+        <p class="price-tag">€<%= car.price.toLocaleString('en-US', { minimumFractionDigits: 2 }) %></p>
 
         <!-- Car Details Table -->
         <section class="car-details-table">
@@ -52,7 +59,7 @@
             <thead>
               <tr>
                 <th>Type</th>
-                <th>Detail</th>
+                <th>Detalii</th>
               </tr>
             </thead>
             <tbody>
@@ -77,59 +84,113 @@
     </div>
 
     <!-- Dotări Section -->
+    <% const features = car.description ? car.description.split(',') : []; %>
     <section class="car-features">
       <h2>Dotări</h2>
       <ul>
-        <li>Computer bord</li>
-        <li>Servodirecție</li>
-        <li>ABS</li>
-        <li>Tempomat</li>
-        <!-- Add more features as needed -->
+        <% features.forEach(feature => { %>
+          <li><%= feature.trim() %></li>
+        <% }) %>
       </ul>
     </section>
-
-    <a href="/masini-de-vanzare" class="back-to-listing">Înapoi la Mașini de Vânzare</a>
   </main>
 
   <footer>
-    <p>&copy; 2023 Autoprc RolCris. Toate drepturile rezervate.</p>
+    <div class="footer-content">
+      <div class="footer-logo-section">
+        <img src="/images/logo.webp" alt="Logo">
+      </div>
+      <div class="footer-locatii">
+        <h3>LOCAȚII</h3>
+        <ul>
+          <li>STR. LUCIAN BLAGA, NR. 347</li>
+          <li>440227 Satu Mare, Romania</li>
+          <hr>
+          <li>ANPC</li>
+        </ul>
+        <div class="footer-anpc">
+          <a href="http://www.anpc.ro" target="_blank">
+            <img src="/images/anpc1.webp" alt="ANPC Link">
+          </a>
+          <a href="http://www.anpc.ro" target="_blank">
+            <img src="/images/anpc2.webp" alt="ANPC Link">
+          </a>
+        </div>
+      </div>
+      <div class="footer-program">
+        <h3>PROGRAM</h3>
+        <ul>
+          <li>Luni - Vineri: 9:00 – 18:00</li>
+          <li>Sâmbătă – Duminică: 9:00 - 13:00</li>
+        </ul>
+      </div>
+      <div class="footer-quick-links">
+        <h3>QUICK LINKS</h3>
+        <ul>
+          <li><a href="/">Acasă</a></li>
+          <li><a href="/masini-de-vanzare">Mașini de Vânzare</a></li>
+          <li><a href="/despre-noi">Despre noi</a></li>
+          <li><a href="/finantare">Finanțare</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/profesional">Profesional</a></li>
+        </ul>
+      </div>
+      <div class="footer-finance-form">
+        <h3>Formular de Finanțare</h3>
+        <form>
+          <input type="text" placeholder="Numele tău">
+          <input type="email" placeholder="Adresa de email">
+          <input type="text" placeholder="Număr de contact">
+          <button type="submit">Trimite</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 Autoparc RolCris. Toate drepturile rezervate. <a href="https://sapcreation.com">by SAPCreation</a>
+    </div>
   </footer>
 
+  <!-- Include JS files -->
   <script>
     function changeImage(imagePath) {
       document.querySelector('.main-image').src = imagePath;
-      document.querySelector('#mainImageLink').href = imagePath; // Update link to open full-size image
+      document.querySelector('#mainImageLink').href = imagePath;
     }
   </script>
+  <script src="/js/main.js"></script>
 
   <style>
-    /* Styling for car detail page */
+    /* 
+     Inline CSS: 
+     Do NOT style nav and footer here as requested.
+     Focus on main content, black background, white text, modern responsive layout.
+    */
 
     body {
-      background-color: #111;
-      color: #fff;
-      font-family: Arial, sans-serif;
-    }
-
-    header nav ul {
+      background-color: #000; /* Black background */
       display: flex;
-      justify-content: center;
-      padding: 10px;
-      background-color: #333;
+      flex-direction: column;
+      min-height: 100vh;
+      color: #fff; /* White text */
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding-top: 50px; /* Combined height of fixed elements */
     }
 
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 10px;
-      padding: 10px;
+    main {
+      flex: 1;
+      padding: 20px;
+    }
+
+    h1{
+      color: #b22222;
     }
 
     .car-detail-container {
       display: flex;
       flex-wrap: wrap;
       gap: 40px;
-      padding: 20px;
+      margin-bottom: 40px;
     }
 
     .car-gallery-section {
@@ -142,12 +203,13 @@
       width: 100%;
       max-width: 700px;
       border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
       cursor: pointer;
     }
 
     .thumbnail-gallery {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       gap: 10px;
       margin-top: 10px;
@@ -173,8 +235,14 @@
       max-width: 35%;
     }
 
+    h1 {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
     .price-tag {
-      font-size: 28px;
+      font-size: 1.5em;
       font-weight: bold;
       color: #ff4500;
       margin-bottom: 20px;
@@ -195,55 +263,62 @@
     }
 
     .car-details-table {
-      width: 100%;
-      text-align: left;
       margin-top: 20px;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
+      background-color: #111;
+      color: #fff;
+      font-size: 0.9em;
     }
 
     th, td {
       padding: 10px;
       border: 1px solid #444;
+      text-align: left;
+      vertical-align: middle;
     }
 
     th {
       background-color: #222;
+      font-weight: bold;
+    }
+
+    /* Car Features Section */
+    .car-features {
+      margin-top: 40px;
+    }
+
+    .car-features h2 {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+      color: #fff;
+      text-align: center;
     }
 
     .car-features ul {
-      list-style: none;
-      padding-left: 0;
-      columns: 2;
-      margin: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;           /* Controls space between feature boxes */
+      justify-content: flex-start; /* Align items to the left, but you can adjust as needed */
     }
+
 
     .car-features li {
-      padding: 5px;
+      background: #111;
+      border: 1px solid #444;
+      border-radius: 5px;
+      padding: 8px;
+      font-size: 0.9em;
     }
 
-    .back-to-listing {
-      display: block;
-      text-align: center;
-      margin: 20px 0;
-      color: #ff4500;
-      text-decoration: none;
-      font-size: 18px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 10px;
-      background-color: #222;
-      margin-top: 20px;
-    }
-
+    /* Responsive */
     @media (max-width: 768px) {
       .car-detail-container {
         flex-direction: column;
+        align-items: center;
       }
 
       .car-gallery-section, .car-info-section {
@@ -254,7 +329,23 @@
         width: 80px;
         height: 60px;
       }
+
+      table, th, td {
+        font-size: 0.9em;
+      }
+
+      .car-features ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .car-features li {
+    flex: 1 1 auto;
+    min-width: 100px; /* Adjust as needed */
+    display: inline-block;
+  }
     }
+
   </style>
 </body>
 </html>

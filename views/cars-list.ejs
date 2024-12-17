@@ -8,63 +8,50 @@
     <link rel="stylesheet" href="/css/styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-      /* Specific styles for this page */
-      .coming-soon {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 80vh; /* Match the height of main content from styles.css */
-        background-color: #000; /* Black background */
-      }
-      
-      .coming-soon h1 {
-        color: #fff; /* White text */
-        font-size: 4em; /* Big text */
-        text-align: center;
-      }
-      .info-bar{
-        background-color: #111; /* Dark background to match your theme */
-        color: #fff; /* Light text for contrast */
-        padding: 10px;
-        display: flex;
-        justify-content: space-evenly; /* Space out the two items */
-        align-items: center;
-      }
-      .info-item {
-        margin: 0 10px;
-        font-size: 1rem; /* Adjust the size as needed */
-      }
-      .info-item i {
-        margin-right: 5px; /* Space between the icon and text */
-      }
-    </style>
 </head>
 <body>
     
-  <div class="info-bar">
-    <div class="info-item">
-      <i class="fas fa-phone"></i>info: +40 123 456 789
+  <div class="header-container">
+    <div class="info-bar">
+      <div class="info-item">
+        <i class="fas fa-phone"></i>Autoparc: +40 740 513 713
+      </div>
+      <div class="info-item">
+        <i class="fas fa-money-bill-wave"></i>Finanțare: +40 744 665 663
+      </div>
     </div>
-    <div class="info-item">
-      <i class="fas fa-money-bill-wave"></i>Finantare: +40 770 187 601
-    </div>
-  </div>
-
-  <!-- Navigation Bar -->
-  <header>
-    <nav>
-      <ul>
+  
+    <nav class="main-nav">
+      <picture>
+        <source srcset="/images/logo.webp" type="image/webp">
+        <img src="/images/logo.png" alt="Logo" class="logo">
+      </picture>
+      <button class="burger-menu" aria-label="Menu">☰</button>
+      <ul class="nav-links">
         <li><a href="/">Acasă</a></li>
-        <li><a href="/masini-de-vanzare">Mașini de vânzare</a></li>
+        <li><a href="/masini-de-vanzare">Mașini de Vânzare</a></li>
         <li><a href="/despre-noi">Despre noi</a></li>
         <li><a href="/finantare">Finanțare</a></li>
         <li><a href="/contact">Contact</a></li>
         <li><a href="/profesional">Profesional</a></li>
       </ul>
     </nav>
-  </header>
-    <h1>Mașini de Vânzare</h1>
+  </div>
+    <h1 style="display: flex; justify-content: center; color: #ff4500;">Mașini de Vânzare</h1>
+
+  <!-- Search Form -->
+<form action="/masini-de-vanzare" method="GET" class="search-form">
+  <div class="search-fields">
+    <input type="text" name="marca" placeholder="Marca" />
+    <input type="text" name="model" placeholder="Model" />
+    <input type="number" name="an_fabricatie" placeholder="An fabricație" />
+    <input type="text" name="combustibil" placeholder="Combustibil" />
+    <input type="text" name="cutie_viteza" placeholder="Cutie Viteza" />
+    <input type="number" name="min_price" placeholder="Preț Minim" />
+    <input type="number" name="max_price" placeholder="Preț Maxim" />
+    <button type="submit">Caută</button>
+  </div>
+</form>
 
     <div class="cars-grid" id="carsGrid">
         <% cars.forEach(car => { %>
@@ -84,127 +71,221 @@
         <% }); %>
     </div>
 
-    <a href="/" class="back-to-home">Înapoi la Acasă</a>
-
     <style>
+      .search-form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin: 20px;
+      }
+    
+      .search-fields input {
+        padding: 10px;
+        border: 1px solid #444;
+        border-radius: 5px;
+        background-color: #111;
+        color: #fff;
+        width: 180px;
+      }
+    
+      .search-fields button {
+        padding: 10px 15px;
+        background-color: #b22222;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+    
+      .search-fields button:hover {
+        background-color: #ff4500;
+      }
+    
+      .cars-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 columns per row */
+        gap: 20px; /* Adjust spacing between cards */
+        margin: 20px;
+      }
+    
+      .car-item {
+        background: rgba(50, 50, 50, 0.7);
+        padding: 5px; /* Reduced padding to make the box tighter */
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+    
+      .car-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+      }
+    
+      .car-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+    
+      .image-wrapper {
+        width: 100%;
+        height: 250px; /* Set a fixed proportional height */
+        overflow: hidden;
+        margin-bottom: 10px; /* Reduce space between the image and car details */
+        border-radius: 8px; /* Rounded corners */
+        }
+    
+      .car-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures the image fills the space without distortion */
+        transition: transform 0.3s ease;
+      }
+    
+      .car-item:hover .car-image {
+        transform: scale(1.05);
+      }
+    
+      .car-details {
+        margin-top: 5px; /* Reduced space between image and text */
+      }
+    
+      .car-details h3 {
+        margin: 0;
+        font-size: 1.2em;
+        color: #ff4500; /* Keep orange for title */
+      }
+    
+      .car-details p {
+        margin: 5px 0;
+        font-size: 0.9em;
+        color: #fff;
+      }
+    
+      .price-tag {
+        color: #ff4500;
+        font-weight: bold;
+        font-size: 1.1em;
+      }
+    
+      .view-details {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px 15px;
+        background-color: #b22222;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+      }
+    
+      .view-details:hover {
+        background-color: #ff4500;
+      }
+    
+      @media (max-width: 768px) {
         .cars-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 25px;
-            margin: 20px;
+          grid-template-columns: 1fr; /* Single column layout on smaller screens */
         }
-
-        .car-item {
-            background: rgba(50, 50, 50, 0.7); /* Dark grey with 70% transparency */
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .car-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
-        }
-
-        .car-link {
-            text-decoration: none;
-            color: inherit; /* Ensure link color doesn't change */
-            display: block;
-        }
-
+    
         .image-wrapper {
-            width: 100%;
-            height: 400px; /* Set height to maintain consistency */
-            overflow: hidden; /* Hide any overflow to maintain size consistency */
-            margin-bottom: 15px; /* Space between image and car details */
-            border-radius: 5px; /* Keep border-radius for a smoother look */
+          height: 250px; /* Slightly smaller height for mobile */
         }
+      }
+    
+      .back-to-home {
+        display: block;
+        margin: 20px 0;
+        color: #b22222;
+        text-decoration: none;
+        font-size: 16px;
+      }
+    
+      .back-to-home:hover {
+        color: #ff4500;
+      }
+    @media (max-width: 1200px) {
+      .cars-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 images per row for medium screens */
+      }
+    }
 
-        .car-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Ensure the image fills the container while maintaining aspect ratio */
-            transition: transform 0.3s ease; /* Add slight zoom effect on hover */
-        }
+    @media (max-width: 768px) {
+      .cars-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 images per row for smaller screens */
+      }
 
-        .car-item:hover .car-image {
-            transform: scale(1.05); /* Zoom in slightly when hovered */
-        }
+      .image-wrapper {
+        height: 200px; /* Smaller images for smaller screens */
+      }
+    }
 
-        .car-details {
-            margin-top: 10px;
-        }
+    @media (max-width: 480px) {
+      .cars-grid {
+        grid-template-columns: 1fr; /* 1 image per row for mobile */
+      }
 
-        .car-details p {
-            font-size: 16px;
-            color: #fff;
-        }
-
-        .price-tag {
-            color: #ff4500; /* Orange Red color for the price tag */
-            font-weight: bold;
-            font-size: 18px; /* Slightly larger font for the price */
-        }
-
-        .view-details {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 12px 20px;
-            background-color: #b22222; /* Firebrick Red */
-            color: #fff;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-
-        .view-details:hover {
-            background-color: #ff4500; /* Orange Red */
-        }
-
-        @media (max-width: 768px) {
-            .cars-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .back-to-home {
-            display: block;
-            margin: 20px 0;
-            color: #b22222;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        .back-to-home:hover {
-            color: #ff4500; /* Orange Red */
-        }
+      .image-wrapper {
+        height: 180px;
+      }
+    }
     </style>
+    
+
     <footer>
-        <div class="footer-content">
-          <p>© 2025 Autoprc RolCris. Toate drepturile rezervate.</p>
-          <nav>
-            <ul>
-              <li><a href="/">Acasă</a></li>
-              <li><a href="/masini-de-vanzare">Mașini de vânzare</a></li>
-              <li><a href="/despre-noi">Despre noi</a></li>
-              <li><a href="/finantare">Finanțare</a></li>
-              <li><a href="/contact">Contact</a></li>
-              <li><a href="/profesional">Profesional</a></li>
-            </ul>
-          </nav>
-          <div class="finance-form">
-            <h3>Finanțare</h3>
-            <form action="/finantare" method="POST">
-              <input type="text" name="name" placeholder="Nume" required>
-              <input type="email" name="email" placeholder="Email" required>
-              <input type="tel" name="phone" placeholder="Telefon" required>
-              <button type="submit">Trimite</button>
-            </form>
+      <div class="footer-content">
+        <div class="footer-logo-section">
+          <img src="/images/logo.webp" alt="Logo">
+        </div>
+        <div class="footer-locatii">
+          <h3>LOCAȚII</h3>
+          <ul>
+            <li>STR. LUCIAN BLAGA, NR. 347</li>
+            <li>440227 Satu Mare, Romania</li>
+            <hr>
+            <li>ANPC</li>
+          </ul>
+          <div class="footer-anpc">
+            <a href="http://www.anpc.ro" target="_blank">
+              <img src="/images/anpc1.webp" alt="ANPC Link">
+            </a>
+            <a href="http://www.anpc.ro" target="_blank">
+              <img src="/images/anpc2.webp" alt="ANPC Link">
+            </a>
           </div>
         </div>
-      </footer>
+        <div class="footer-program">
+          <h3>PROGRAM</h3>
+          <ul>
+            <li>Luni - Vineri: 9:00 – 18:00</li>
+            <li>Sâmbătă – Duminică: 9:00 - 13:00</li>
+          </ul>
+        </div>
+        <div class="footer-quick-links">
+          <h3>QUICK LINKS</h3>
+          <ul>
+            <li><a href="/">Acasă</a></li>
+            <li><a href="/masini-de-vanzare">Mașini de Vânzare</a></li>
+            <li><a href="/despre-noi">Despre noi</a></li>
+            <li><a href="/finantare">Finanțare</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/profesional">Profesional</a></li>
+          </ul>
+        </div>
+        <div class="footer-finance-form">
+          <h3>Formular de Finanțare</h3>
+      
+          <%- include('_footer') %>
+  
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2025 Autoparc RolCris. Toate drepturile rezervate. <a href="https://sapcreation.com">by SAPCreation</a>
+      </div>
+    </footer>
     
       <!-- Floating Buttons -->
       <a href="https://wa.me/your-number" class="floating-btn whatsapp" target="_blank">WhatsApp</a>

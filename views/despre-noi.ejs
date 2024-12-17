@@ -1,104 +1,347 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Professional</title>
+  <title>Despre Noi</title>
   <link rel="stylesheet" href="/css/styles.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* Specific styles for this page */
-    .coming-soon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 80vh; /* Match the height of main content from styles.css */
+    /* General Page Styles */
+    body {
       background-color: #000; /* Black background */
+      color: #fff; /* White text for contrast */
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
-    
-    .coming-soon h1 {
-      color: #fff; /* White text */
-      font-size: 4em; /* Big text */
+
+    main {
+      flex: 1;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #cb0d0d; /* Firebrick Red */
+    }
+
+    h2 {
+      color: #ff4500; /* Orange Red */
+    }
+
+    p {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    /* About Section Container */
+    .about-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    /* Left Section */
+    .about-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-left button {
+      background: none;
+      border: 1px solid #cb0d0d;
+      color: #cb0d0d;
+      padding: 10px 20px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    /* Right Section */
+    .about-right {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .about-card {
+      border: 1px solid #444;
+      background: rgba(255, 255, 255, 0.05); /* Slight transparency */
+      padding: 20px;
+      text-align: left;
+      border-radius: 8px;
+    }
+
+    .about-card h3 {
+      margin-top: 0;
+      color: #ff4500;
+      font-size: 1.5em;
+    }
+
+    /* Footer Fix */
+    footer {
+      background-color: #111;
+      color: #fff;
+      padding: 20px 0;
       text-align: center;
     }
-    .info-bar{
-      background-color: #111; /* Dark background to match your theme */
-      color: #fff; /* Light text for contrast */
-      padding: 10px;
+
+    .footer-content {
       display: flex;
-      justify-content: space-evenly; /* Space out the two items */
-      align-items: center;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 20px;
     }
-    .info-item {
-      margin: 0 10px;
-      font-size: 1rem; /* Adjust the size as needed */
+
+    .footer-content nav ul {
+      list-style: none;
+      padding: 0;
     }
-    .info-item i {
-      margin-right: 5px; /* Space between the icon and text */
+
+    .footer-content nav a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .finance-form form input,
+    .finance-form form button {
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 1em;
+      width: 100%;
+    }
+
+    .finance-form form button {
+      background-color: #cb0d0d;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    /* Text Left - Image Right Section */
+.about-text-image {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 40px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05); /* Light transparency background */
+  border-radius: 10px;
+}
+
+.about-text-left {
+  flex: 1;
+}
+
+.about-text-left h2 {
+  font-size: 2em;
+  color: #ff4500; /* Orange Red */
+  margin-bottom: 15px;
+}
+
+.about-text-left p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #ddd; /* Light grey text for contrast */
+}
+
+.about-image-right {
+  flex: 1;
+  text-align: center;
+}
+
+.about-image-right img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3); /* Subtle glow effect */
+}
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .about-container {
+        grid-template-columns: 1fr;
+      }
+
+      .about-right {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+  .about-text-image {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-image-right {
+    margin-top: 20px;
+  }
     }
   </style>
 </head>
 <body>
-  <div class="info-bar">
-    <div class="info-item">
-      <i class="fas fa-phone"></i>info: +40 123 456 789
+  <!-- Header -->
+  <div class="header-container">
+    <div class="info-bar">
+      <div class="info-item">
+        <i class="fas fa-phone"></i>Autoparc: +40 740 513 713
+      </div>
+      <div class="info-item">
+        <i class="fas fa-money-bill-wave"></i>Finanțare: +40 744 665 663
+      </div>
     </div>
-    <div class="info-item">
-      <i class="fas fa-money-bill-wave"></i>Finantare: +40 770 187 601
-    </div>
-  </div>
 
-  <!-- Navigation Bar -->
-  <header>
-    <nav>
-      <ul>
+    <nav class="main-nav">
+      <picture>
+        <source srcset="/images/logo.webp" type="image/webp">
+        <img src="/images/logo.png" alt="Logo" class="logo">
+      </picture>
+      <button class="burger-menu" aria-label="Menu">☰</button>
+      <ul class="nav-links">
         <li><a href="/">Acasă</a></li>
-        <li><a href="/masini-de-vanzare">Mașini de vânzare</a></li>
+        <li><a href="/masini-de-vanzare">Mașini de Vânzare</a></li>
         <li><a href="/despre-noi">Despre noi</a></li>
         <li><a href="/finantare">Finanțare</a></li>
         <li><a href="/contact">Contact</a></li>
         <li><a href="/profesional">Profesional</a></li>
       </ul>
     </nav>
-  </header>
+  </div>
 
   <!-- Main Content -->
-  <main class="coming-soon">
-    <h1>COMING SOON</h1>
-  </main>
+  <main>
+    <div class="about-container">
+      <!-- Left Content -->
+      <div class="about-left">
+        
+        <h1>Dealer auto Satu Mare</h1>
+        <h1>18 ANI DE EXPERIENȚĂ</h1>
+        <p>
+          Suntem un parc auto autorizat în comerțul cu autoturisme, cu experiență în vânzări și activitate din 2005. Vă oferim posibilitatea de a achiziționa un autoturism cu modalități de plată flexibile, precum plata pe loc, 
+          prin transfer bancar sau printr-un sistem avantajos de rate, indiferent de vechimea autoturismului.
+        </p>
+        <button onclick="window.location.href='/masini-de-vanzare';">Masini De Vanzare</button>
+      </div>
 
-  <!-- Footer -->
+      <!-- Right Grid Content -->
+      <div class="about-right">
+        <div class="about-card">
+          <h3>Calitate</h3>
+          <p>Fiecare mașină din selecția noastră a fost atent verificată și testată, astfel încât să vă oferim doar cele mai fiabile și durabile opțiuni de pe piață.</p>
+        </div>
+        <div class="about-card">
+          <h3>Serviciu Clienți</h3>
+          <p>Echipa noastră de experți dedicată este mereu pregătită să ofere consultanță personalizată și să răspundă la nevoile și preferințele fiecărui client.</p>
+        </div>
+        <div class="about-card">
+          <h3>Transparență</h3>
+          <p>Suntem cunoscuți pentru transparența totală în procesul nostru de vânzare.  Le oferim informații detaliate despre istoricul vehiculelor, 
+            serviciile de întreținere și orice alte aspecte relevante.</p>
+        </div>
+        <div class="about-card">
+          <h3>Gamă Variată</h3>
+          <p>Indiferent dacă cauți o mașină compactă pentru oraș sau un SUV spațios pentru aventuri în natură, selecția noastră captivantă îți oferă tot ceea ce ai nevoie.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- New Section: Text Left, Image Right -->
+<div class="about-text-image">
+  <!-- Left Text -->
+  <div class="about-text-left">
+    <h2>De Ce Să Ne Alegeți?</h2>
+    <p>Cu peste 18 ani de experiență, suntem cea mai bună echipă care vă ajută să găsiți mașina potrivită!</p>
+    <p>
+      Vă așteptăm în parcul nostru auto din Satu Mare, situat pe strada Lucian Blaga nr. 347. 
+      Oferim o gamă largă de autoturisme, servicii de consultanță și soluții de finanțare avantajoase.
+      Suntem aici să vă ajutăm să găsiți mașina perfectă pentru nevoile dumneavoastră!
+    </p>
+    <p>
+      Pentru detalii suplimentare, sunați la <strong>0740 513 713</strong> sau vizitați-ne la locație!
+    </p>
+    <div class="finance-form">
+      <h3>Finanțare</h3>
+      <form action="/finantare" method="POST">
+        <input type="text" name="name" placeholder="Nume" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="tel" name="phone" placeholder="Telefon" required>
+        <button type="submit">Trimite</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Right Image -->
+  <div class="about-image-right">
+    <img src="/images/dn01.webp" alt="Dealer Auto Imagine" />
+  </div>
+</div>
+
+
+  </main>
+  <!-- Floating Buttons -->
+  <a href="https://wa.me/your-number" class="floating-btn whatsapp" target="_blank">WhatsApp</a>
+  <a href="/finantare" class="floating-btn finantare">Finanțare</a>
+
   <footer>
     <div class="footer-content">
-      <p>© 2025 Autoprc RolCris. Toate drepturile rezervate.</p>
-      <nav>
+      <div class="footer-logo-section">
+        <img src="/images/logo.webp" alt="Logo">
+      </div>
+      <div class="footer-locatii">
+        <h3>LOCAȚII</h3>
+        <ul>
+          <li>STR. LUCIAN BLAGA, NR. 347</li>
+          <li>440227 Satu Mare, Romania</li>
+          <hr>
+          <li>ANPC</li>
+        </ul>
+        <div class="footer-anpc">
+          <a href="http://www.anpc.ro" target="_blank">
+            <img src="/images/anpc1.webp" alt="ANPC Link">
+          </a>
+          <a href="http://www.anpc.ro" target="_blank">
+            <img src="/images/anpc2.webp" alt="ANPC Link">
+          </a>
+        </div>
+      </div>
+      <div class="footer-program">
+        <h3>PROGRAM</h3>
+        <ul>
+          <li>Luni - Vineri: 9:00 – 18:00</li>
+          <li>Sâmbătă – Duminică: 9:00 - 13:00</li>
+        </ul>
+      </div>
+      <div class="footer-quick-links">
+        <h3>QUICK LINKS</h3>
         <ul>
           <li><a href="/">Acasă</a></li>
-          <li><a href="/masini-de-vanzare">Mașini de vânzare</a></li>
+          <li><a href="/masini-de-vanzare">Mașini de Vânzare</a></li>
           <li><a href="/despre-noi">Despre noi</a></li>
           <li><a href="/finantare">Finanțare</a></li>
           <li><a href="/contact">Contact</a></li>
           <li><a href="/profesional">Profesional</a></li>
         </ul>
-      </nav>
-      <div class="finance-form">
-        <h3>Finanțare</h3>
-        <form action="/finantare" method="POST">
-          <input type="text" name="name" placeholder="Nume" required>
-          <input type="email" name="email" placeholder="Email" required>
-          <input type="tel" name="phone" placeholder="Telefon" required>
-          <button type="submit">Trimite</button>
-        </form>
+      </div>
+      <div class="footer-finance-form">
+        <h3>Formular de Finanțare</h3>
+    
+        <%- include('_footer') %>
+
       </div>
     </div>
+    <div class="footer-bottom">
+      © 2025 Autoparc RolCris. Toate drepturile rezervate. <a href="https://sapcreation.com">by SAPCreation</a>
+    </div>
   </footer>
-
-  <!-- Floating Buttons -->
-  <a href="https://wa.me/your-number" class="floating-btn whatsapp" target="_blank">WhatsApp</a>
-  <a href="/finantare" class="floating-btn finantare">Finanțare</a>
-
-  <!-- Include JS files -->
   <script src="/js/main.js"></script>
 </body>
 </html>

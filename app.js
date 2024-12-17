@@ -7,6 +7,8 @@ const fs = require('fs');
 const util = require('util');
 const unlink = util.promisify(fs.unlink);
 const multer = require('multer');
+const nodemailer = require('nodemailer');
+
 
 // Create the app
 const app = express();
@@ -52,6 +54,39 @@ function isAdmin(req, res, next) {
     res.redirect('/login');
   }
 }
+
+// ------- EMAIL FORM --------
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.post('/contact', async (req, res) => {
+  const { name, email, phone, message } = req.body;
+
+  // Option 1: Send an Email Notification
+  try {
+    const transporter = nodemailer.createTransport({
+      service: 'gmail', // or another email provider
+      auth: {
+        user: 'infosapcreation@gmail.com', // Replace with your email
+        pass: 'heqq zjdk tbam xpaq'         // Replace with your email password
+      }
+    });
+
+    const mailOptions = {
+      from: email,
+      to: 'sap87sm@gmail.com', // Replace with admin email
+      subject: 'New Contact Form Submission',
+      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`
+    };
+
+    await transporter.sendMail(mailOptions);
+    // Redirect to contact page with a success query parameter
+    res.redirect('/?success=1');
+  } catch (error) {
+    console.error('Error sending email:', error);
+    res.redirect('/contact?error=1');
+  }
+});
+
 
 // Home page - display all cars
 app.get('/', async (req, res) => {
@@ -118,22 +153,60 @@ app.get('/admin', isAdmin, async (req, res) => {
 
 // Route to display all cars on the "Masini de Vanzare" page
 app.get('/masini-de-vanzare', async (req, res) => {
-  try {
-    const [cars] = await db.query(`
-      SELECT cars.*, 
-        (SELECT car_images.image_path 
-         FROM car_images 
-         WHERE car_images.car_id = cars.id 
-         LIMIT 1) AS image_path 
-      FROM cars;
-    `);
+  const { marca, model, an_fabricatie, combustibil, cutie_viteza, min_price, max_price } = req.query;
 
+  let query = `
+    SELECT cars.*, 
+      (SELECT car_images.image_path 
+       FROM car_images 
+       WHERE car_images.car_id = cars.id 
+       LIMIT 1) AS image_path 
+    FROM cars 
+    WHERE 1 = 1
+  `;
+
+  const params = [];
+
+  // Add filters dynamically based on input
+  if (marca) {
+    query += ' AND marca LIKE ?';
+    params.push(`%${marca}%`);
+  }
+  if (model) {
+    query += ' AND model LIKE ?';
+    params.push(`%${model}%`);
+  }
+  if (an_fabricatie) {
+    query += ' AND an_fabricatie = ?';
+    params.push(an_fabricatie);
+  }
+  if (combustibil) {
+    query += ' AND combustibil LIKE ?';
+    params.push(`%${combustibil}%`);
+  }
+  if (cutie_viteza) {
+    query += ' AND cutie_viteza LIKE ?';
+    params.push(`%${cutie_viteza}%`);
+  }
+  
+  if (min_price) {
+    query += ' AND price >= ?';
+    params.push(min_price);
+  }
+  if (max_price) {
+    query += ' AND price <= ?';
+    params.push(max_price);
+  }
+
+  try {
+    const [cars] = await db.query(query, params);
     res.render('cars-list', { cars });
   } catch (err) {
-    console.error('Error fetching cars:', err.message);
+    console.error('Error fetching filtered cars:', err.message);
     res.send('Error occurred while fetching cars.');
   }
 });
+
 
 // Display-Render Contact page
 app.get('/contact', (req, res) => {

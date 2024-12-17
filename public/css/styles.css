@@ -1,117 +1,235 @@
-/* General Styles */
+/* =========================================================
+   Global Styles & Resets
+========================================================= */
 body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #000; /* Black background */
-    color: #fff; /* White text */
-  }
-  
-  /* Navigation Bar */
-  nav {
-    background-color: #111; /* Darker black */
-  }
-  
-  main {
-    background-image: url('../images/bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 85vh;
-  }
-  
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #000; /* Black background */
+  background-image: url('../images/bg.jpg'); /* Ensure this path is correct */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Keeps the background static */
+  color: #fff; /* White text */
+  padding-top: 70px; /* Offset for fixed elements (header) */
+}
 
-  nav ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  nav li {
-    flex: 1;
-  }
-  
-  nav a {
-    color: #fff;
-    text-decoration: none;
-    display: block;
-    padding: 10px;
-    text-align: center;
-    
-  }
-  
-  nav a:hover {
-    background-color: #b22222; /* Firebrick Red */
-  }
-  
-  /* Main Content */
-  .intro {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 20px;
-  }
-  
-  .intro-text, .intro-form {
-    flex: 1;
-    min-width: 300px;
-  }
-  
-  .intro-text h1 {
-    color: #b22222; /* Firebrick Red */
-  }
-  
-  .intro-form h2 {
-    color: #b22222;
-  }
-  
-  .intro-form form input, .intro-form form button {
-    margin-bottom: 10px;
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-  }
-  
-  .intro-form form input {
-    background-color: #333;
-    color: #fff;
-  }
-  
-  .intro-form form button {
-    background-color: #b22222;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .intro-form form button:hover {
-    background-color: #ff4500; /* Orange Red */
-  }
+h1, h2 {
+  color: #333;
+  text-shadow: 0 0 5px rgba(255, 69, 0, 0.2), /* Inner soft glow */
+               0 0 10px rgba(255, 69, 0, 0.2), /* Middle glow */
+               0 0 15px rgba(255, 69, 0, 0.2); /* Outer glow */
+}
 
-  .search-form form {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .search-form input, .search-form button {
-    flex: end;
-    margin: 5px;
-    padding: 10px;
-    border: none;
-    background-color: #333333;
-    color: #FFFFFF;
-  }
-  
-  .search-form button {
-    background-color: #B22222;
-    cursor: pointer;
-  }
-  
-  .search-form button:hover {
-    background-color: #FF4500; /* Orange Red */
-  }
-  
-  /* Cars Display */
-.cars-display {
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 20px; 
+}
+
+img {
+  max-width: auto;
+}
+
+/* =========================================================
+   Header Section (Info Bar & Navigation)
+========================================================= */
+/* Combined Header Container */
+.header-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 0 10px 5px rgba(178, 34, 34, 0.7); /* Red glow effect */
+}
+
+/* Info Bar */
+.info-bar {
+  background-color: #111; /* Dark background */
+  color: #cb0d0d; /* Red text */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 20px;
+}
+
+.info-item {
+  margin: 0 10px;
+  font-size: 1rem;
+}
+
+.info-item i {
+  margin-right: 5px;
+}
+
+/* Navigation Bar */
+nav {
+  top: 30px; 
+  width: 100%;
+  background-color: #111;
+  z-index: 999;
+  padding: 10px 0;
+  height: 50px; 
+}
+
+nav.scrolling {
+  background-color: rgba(17, 17, 17, 0.9); /* Slightly transparent */
+}
+
+/* Main Navigation */
+.main-nav {
+  background-color: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px; 
+  padding: 0 20px;
+}
+
+nav ul, .nav-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  text-shadow: 0 0 5px rgba(255, 69, 0, 0.8), /* Inner soft glow */
+               0 0 10px rgba(255, 69, 0, 0.6), /* Middle glow */
+               0 0 15px rgba(255, 69, 0, 0.4); /* Outer glow */
+}
+
+nav li, .nav-links li {
+  flex: 1;
+}
+
+nav a, .nav-links a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  padding: 10px;
+}
+
+nav a:hover, .nav-links a:hover {
+  background-color: #b22222; /* Firebrick Red */
+}
+
+/* Logo */
+.logo {
+  height: 40px;
+  margin-right: 20px; 
+}
+
+/* Burger Menu (for mobile) */
+.burger-menu {
+  display: none; 
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000; 
+  color: #fff;
+}
+/* =========================================================
+   Text Glow effect
+========================================================= */
+.text-glow {
+  color: #fff; /* White text color */
+  text-shadow: 0 0 5px rgba(255, 69, 0, 0.8), /* Inner soft glow */
+               0 0 10px rgba(255, 69, 0, 0.6), /* Middle glow */
+               0 0 15px rgba(255, 69, 0, 0.4); /* Outer glow */
+}
+
+/* =========================================================
+   Main Content Styles
+========================================================= */
+
+/* Main Background */
+main {
+  background-image: url('../images/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  height: 85vh;
+}
+
+/* Intro Section */
+.intro {
+  display: flex;
+  flex-wrap: wrap;
   padding: 20px;
+}
+
+.intro-text, .intro-form {
+  flex: 1;
+  min-width: 300px;
+}
+
+.intro-text h1 {
+  color: #b22222; /* Firebrick Red */
+}
+
+.intro-form h2 {
+  color: #b22222;
+}
+
+.intro-form form input,
+.intro-form form button {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+}
+
+.intro-form form input {
+  background-color: #333;
+  color: #fff;
+}
+
+.intro-form form button {
+  background-color: #b22222;
+  color: #fff;
+  cursor: pointer;
+}
+
+.intro-form form button:hover {
+  background-color: #ff4500; /* Orange Red */
+}
+
+/* Search Form */
+.search-form form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.search-form input, 
+.search-form button {
+  margin: 5px;
+  padding: 10px;
+  border: none;
+  background-color: #333333;
+  color: #FFFFFF;
+}
+
+.search-form button {
+  background-color: #B22222;
+  cursor: pointer;
+}
+
+.search-form button:hover {
+  background-color: #FF4500; /* Orange Red */
+}
+
+/* Cars Display */
+.cars-display {
+  padding: 10px;
 }
 
 .cars-display h2 {
@@ -126,7 +244,7 @@ body {
 }
 
 .car-item {
-  background: rgba(50, 50, 50, 0.7); /* Dark grey with transparency */
+  background: rgba(50, 50, 50, 0.7);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
@@ -169,122 +287,216 @@ body {
   background-color: #ff4500; /* Orange Red */
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .cars-grid {
-    grid-template-columns: 1fr;
-  }
+/* =========================================================
+   Footer Styles
+========================================================= */
+* {
+  box-sizing: border-box;
 }
 
-  
-  /* Footer */
-  footer {
-    background-color: #111;
-    color: #fff;
-    padding: 20px;
-  }
-  
-  .footer-content {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .footer-content nav {
-    flex: 1;
-    min-width: 200px;
-  }
-  
-  .footer-content nav ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .footer-content nav li {
-    margin-bottom: 10px;
-  }
-  
-  .footer-content nav a {
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  .footer-content .finance-form {
-    flex: 1;
-    min-width: 200px;
-  }
-  
-  .finance-form h3 {
-    color: #b22222;
-  }
-  
-  .finance-form form input, .finance-form form button {
-    margin-bottom: 10px;
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-  }
-  
-  .finance-form form input {
-    background-color: #333;
-    color: #fff;
-  }
-  
-  .finance-form form button {
-    background-color: #b22222;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .finance-form form button:hover {
-    background-color: #ff4500;
-  }
-  
-  /* Floating Buttons */
-  .floating-btn {
-    position: fixed;
-    bottom: 70px;
-    right: 20px;
-    background-color: #b22222;
-    color: white;
-    padding: 15px;
-    border-radius: 50%;
-    text-align: center;
-    text-decoration: none;
-    font-size: 18px;
-    z-index: 100;
-  }
-  
-  .floating-btn.finantare {
-    bottom: 130px;
-    background-color: #ff4500;
-  }
-  
-  .floating-btn:hover {
-    opacity: 0.8;
-  }
-  /* public/css/styles.css */
-
-body {
-  font-family: Arial, sans-serif;
+footer {
+  background-color: #111;
+  color: #fff;
+  font-size: 12px; 
+  line-height: 1.2;
+  padding: 10px 0;
 }
 
-h1, h2 {
-  color: #333;
+.footer-content {
+  display: flex;
+  flex-wrap: nowrap; /* Single row on desktop */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
+  gap: 10px;
+  align-items: flex-start;
 }
 
-ul {
-  list-style: none;
+/* Each section */
+.footer-logo-section,
+.footer-locatii,
+.footer-program,
+.footer-quick-links,
+.footer-finance-form {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-li {
-  margin-bottom: 20px;
+/* Logo */
+.footer-logo-section img {
+  max-width: 60px;
+  margin-bottom: 5px;
 }
 
-img {
-  max-width: 200px;
+/* Locații & ANPC */
+.footer-locatii h3 {
+  color: #cb0d0d;
+  margin-bottom: 5px;
+  font-size: 12px;
+  text-transform: uppercase;
 }
 
-/* Admin Page Styles */
+.footer-locatii ul {
+  padding: 0;
+  margin: 0;
+}
+
+.footer-locatii li {
+  margin-bottom: 3px;
+  font-size: 11px;
+}
+
+.footer-locatii hr {
+  border: none;
+  border-top: 1px solid #444;
+  margin: 5px 0;
+}
+
+.footer-anpc {
+  display: flex;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.footer-anpc img {
+  max-width: 80px;
+  height: auto;
+}
+
+/* Program */
+.footer-program h3 {
+  color: #cb0d0d;
+  margin-bottom: 5px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.footer-program li {
+  font-size: 11px;
+  margin-bottom: 3px;
+}
+
+/* Quick Links */
+.footer-quick-links h3 {
+  color: #cb0d0d;
+  margin-bottom: 5px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.footer-quick-links ul {
+  padding: 0;
+  margin: 0;
+}
+
+.footer-quick-links li {
+  margin-bottom: 3px;
+}
+
+.footer-quick-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 11px;
+}
+
+.footer-quick-links a:hover {
+  color: #ff4500;
+}
+
+/* Finance Form */
+.footer-finance-form h3 {
+  color: #cb0d0d;
+  margin-bottom: 5px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.footer-finance-form {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 5px;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.footer-finance-form form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-finance-form input,
+.footer-finance-form button {
+  width: 100%;
+  margin: 3px 0;
+  padding: 5px;
+  border: none;
+  font-size: 11px;
+  background-color: #333;
+  color: #fff;
+}
+
+.footer-finance-form button {
+  background-color: #cb0d0d;
+  cursor: pointer;
+}
+
+.footer-finance-form button:hover {
+  background-color: #ff4500;
+}
+
+/* Footer bottom */
+.footer-bottom {
+  text-align: center;
+  padding-top: 5px;
+  border-top: 1px solid #444;
+  margin-top: 10px;
+  font-size: 10px;
+  color: #ccc;
+}
+
+.footer-bottom a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 10px;
+}
+
+.footer-bottom a:hover {
+  color: #ff4500;
+}
+
+
+/* =========================================================
+   Floating Buttons
+========================================================= */
+.floating-btn {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  background-color: #b22222;
+  color: white;
+  padding: 15px;
+  border-radius: 50%;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  z-index: 100;
+}
+
+.floating-btn.finantare {
+  bottom: 130px;
+  background-color: #ff4500;
+}
+
+.floating-btn:hover {
+  opacity: 0.8;
+}
+
+/* =========================================================
+   Admin Page Styles
+========================================================= */
 .admin-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -316,10 +528,129 @@ img {
   height: auto;
 }
 
-/* Responsive Design */
+.search-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 5px;
+}
+
+.search-fields input {
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  background-color: #111;
+  color: #fff;
+  width: 180px;
+}
+
+.search-fields button {
+  padding: 10px 15px;
+  background-color: #b22222;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-fields button:hover {
+  background-color: #ff4500;
+}
+
+#price-tag{
+color: #ff4500;
+font-weight: bold;
+display: block;
+margin-top: 10px;
+}
+.cars-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+gap: 25px;
+margin: 20px;
+}
+
+.car-item {
+background: rgba(50, 50, 50, 0.7); /* Dark grey with 70% transparency */
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+text-align: center;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.car-item:hover {
+transform: scale(1.05);
+box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+}
+
+.car-image {
+width: 100%;
+height: 400px; /* Increased height for larger images */
+border-radius: 5px;
+object-fit: cover; /* Ensure the image is uniformly cropped */
+}
+
+.car-details {
+margin-top: 10px;
+}
+
+.car-details p {
+font-size: 16px;
+color: #fff;
+}
+
+.view-details {
+display: inline-block;
+margin-top: 15px;
+padding: 12px 20px;
+background-color: #b22222; /* Firebrick Red */
+color: #fff;
+text-decoration: none;
+border-radius: 4px;
+transition: background-color 0.3s ease;
+}
+
+.view-details:hover {
+background-color: #ff4500; /* Orange Red */
+}
+
+
+/* =========================================================
+   Responsive Design
+========================================================= */
+
 @media (max-width: 768px) {
+
+  /* Stack intro section */
   .intro {
     flex-direction: column;
+  }
+
+  /* Show burger menu, hide nav links by default */
+  .burger-menu {
+    display: block;
+  }
+
+  .main-nav .nav-links, .nav-links {
+    display: none; 
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 60px; 
+    left: 0;
+    background-color: #000;
+  }
+
+  .nav-links.active,
+  .main-nav .nav-links.active {
+    display: flex;
+  }
+
+  .main-nav .nav-links li {
+    margin: 10px 0;
   }
 
   nav ul {
@@ -330,8 +661,75 @@ img {
     text-align: center;
   }
 
+  .cars-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-bar {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .info-item {
+    margin-bottom: 5px;
+  }
+
+  /* Footer */
+
   .footer-content {
-    flex-direction: column;
+    flex-wrap: wrap; 
+    gap: 10px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .footer-logo-section,
+  .footer-locatii,
+  .footer-program,
+  .footer-quick-links,
+  .footer-finance-form {
+    align-items: center;
+  }
+
+  /* Mobile layout:
+     Row 1: Logo (50%) + Locații (50%)
+     Row 2: Program (50%) + Quick Links (50%)
+     Row 3: Finance Form (100%)
+  */
+
+  .footer-logo-section {
+    order: 1;
+    flex: 1 1 50%;
+  }
+
+  .footer-locatii {
+    order: 2;
+    flex: 1 1 50%;
+  }
+
+  .footer-program {
+    order: 3;
+    flex: 1 1 50%;
+  }
+
+  .footer-quick-links {
+    order: 4;
+    flex: 1 1 50%;
+  }
+
+  .footer-finance-form {
+    order: 5;
+    flex: 1 1 100%;
+    margin-top: 10px;
+  }
+
+  /* Adjusting sizes on mobile */
+  .footer-logo-section img {
+    max-width: 50px;
+  }
+
+  .footer-anpc img {
+    max-width: 70px;
   }
 
   .floating-btn {
@@ -343,5 +741,30 @@ img {
 
   .floating-btn.finantare {
     bottom: 150px;
+  }
+}
+@media (max-width: 1200px) {
+  body .cars-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 images per row for medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  body .cars-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 images per row for smaller screens */
+  }
+
+  body .car-image {
+    height: 180px; /* Adjust height for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  body .cars-grid {
+    grid-template-columns: 1fr; /* 1 image per row for mobile */
+  }
+
+  body .car-image {
+    height: 150px; /* Slightly smaller height for mobile */
   }
 }

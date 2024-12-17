@@ -4,69 +4,262 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add New Car</title>
+  <link rel="stylesheet" href="/css/styles.css">
   <style>
     body {
-      background-color: #111;
-      font-family: Arial, sans-serif;
-      color: #333;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      font-family: 'Arial, sans-serif';
+      background-color: #1e1e1e;
+      color: #f5f5f5;
+      margin: 0;
+      padding: 0;
     }
-    h1 {
-      text-align: center;
-      color: #b22222;
-    }
-    form {
-      background: #fff;
+
+    header {
+      background-color: #2d2d2d;
       padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      color: #fff;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 30px auto;
+      background-color: #2d2d2d;
+      padding: 30px;
       border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 500px;
     }
-    input, textarea, select, button {
-      width: 100%;
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .form-group {
+      flex: 1 1 calc(33.333% - 20px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #ddd;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
       padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
+      background-color: #3c3c3c;
+      border: 1px solid #555;
       border-radius: 5px;
+      color: #fff;
     }
-    button {
-      background-color: #b22222;
+
+    .form-group textarea {
+      resize: vertical;
+    }
+
+    form button {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #4caf50;
       color: #fff;
       border: none;
+      width: 100%;
+      font-size: 16px;
+      border-radius: 5px;
       cursor: pointer;
     }
-    button:hover {
-      background-color: #ff4500;
+
+    form button:hover {
+      background-color: #45a049;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 800px) {
+      .form-group {
+        flex: 1 1 calc(50% - 20px);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .form-group {
+        flex: 1 1 100%;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Add New Car</h1>
-  <form action="/admin/add-car" method="post" enctype="multipart/form-data">
-    <input type="text" name="type" placeholder="Type">
-    <input type="text" name="detalii" placeholder="Detalii">
-    <input type="text" name="marca" placeholder="Marca" required>
-    <input type="text" name="model" placeholder="Model" required>
-    <input type="number" name="an_fabricatie" placeholder="An fabricație" required>
-    <input type="text" name="combustibil" placeholder="Combustibil" required>
-    <input type="number" name="capacitate_cilindrica" placeholder="Capacitate cilindrică" required>
-    <input type="number" name="putere" placeholder="Putere (CP)" required>
-    <input type="text" name="cutie_viteza" placeholder="Cutie de viteză" required>
-    <input type="text" name="kilometrii_rulati" placeholder="Kilometrii rulați" required>
-    <input type="text" name="transmisie" placeholder="Transmisie" required>
-    <input type="text" name="caroserie" placeholder="Caroserie" required>
-    <input type="number" name="numar_portiere" placeholder="Număr de portiere" required>
-    <input type="text" name="culoare" placeholder="Culoare" required>
-    <input type="text" name="norma_poluare" placeholder="Norma de poluare" required>
-    <input type="text" name="vin" placeholder="VIN" required>
-    <input type="number" name="price" step="0.01" placeholder="Price" required>
-    <textarea name="description" placeholder="Description"></textarea>
-    <input type="file" name="carImages" multiple>
-    <button type="submit">Add Car</button>
-  </form>
+  <div class="header-container">
+    <div class="info-bar">
+      <div class="info-item">
+        <i class="fas fa-phone"></i>Autoparc: +40 740 513 713
+      </div>
+      <div class="info-item">
+        <i class="fas fa-money-bill-wave"></i>Finanțare: +40 744 665 663
+      </div>
+    </div>
+  
+    <nav class="main-nav">
+      <picture>
+        <source srcset="/images/logo.webp" type="image/webp">
+        <img src="/images/logo.png" alt="Logo" class="logo">
+      </picture>      
+      <button class="burger-menu" aria-label="Menu">☰</button>
+      <ul class="nav-links">
+        <li><a href="/">Acasă</a></li>
+        <li><a href="/masini-de-vanzare">Mașini de Vânzare</a></li>
+        <li><a href="/despre-noi">Despre noi</a></li>
+        <li><a href="/finantare">Finanțare</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/profesional">Profesional</a></li>
+      </ul>
+    </nav>
+  </div>
+  <header>
+    <h1>Add New Car</h1>
+  </header>
+
+  <!-- <div class="container">
+    <form action="/admin/add-car" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="type">Type:</label>
+        <input type="text" name="type" placeholder="Type">
+      </div>
+      <div class="form-group">
+        <label for="detalii">Detalii:</label>
+        <input type="text" name="detalii" placeholder="Detalii">
+      </div>
+      <div class="form-group">
+        <label for="marca">Marca:</label>
+        <input type="text" name="marca" placeholder="Marca" required>
+      </div>
+      <div class="form-group">
+        <label for="model">Model:</label>
+        <input type="text" name="model" placeholder="Model" required>
+      </div>
+      <div class="form-group">
+        <label for="an_fabricatie">An fabricație:</label>
+        <input type="number" name="an_fabricatie" placeholder="An fabricație" required>
+      </div>
+      <div class="form-group">
+        <label for="combustibil">Combustibil:</label>
+        <input type="text" name="combustibil" placeholder="Combustibil" required>
+      </div>
+      <div class="form-group">
+        <label for="capacitate_cilindrica">Capacitate cilindrică:</label>
+        <input type="number" name="capacitate_cilindrica" placeholder="Capacitate cilindrică" required>
+      </div>
+      <div class="form-group">
+        <label for="putere">Putere (CP):</label>
+        <input type="number" name="putere" placeholder="Putere (CP)" required>
+      </div>
+      <div class="form-group">
+        <label for="cutie_viteza">Cutie de viteză:</label>
+        <input type="text" name="cutie_viteza" placeholder="Cutie de viteză" required>
+      </div>
+      <div class="form-group">
+        <label for="kilometrii_rulati">Kilometrii rulați:</label>
+        <input type="text" name="kilometrii_rulati" placeholder="Kilometrii rulați" required>
+      </div>
+      <div class="form-group">
+        <label for="carImages">Incărcare Imagini:</label>
+        <input type="file" name="carImages" multiple>
+      </div>
+
+      <button type="submit">Adaugă</button>
+    </form>
+  </div> -->
+
+  <div class="container">
+    <form action="/admin/add-car" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="type">Tipul: (SUV, Limuzina, Combi etc)</label>
+        <input type="text" name="type" placeholder="Type">
+      </div>
+      <div class="form-group">
+        <label for="detalii">Detalii Speciale:</label>
+        <input type="text" name="detalii" placeholder="Detalii">
+      </div>
+      <div class="form-group">
+        <label for="marca">Marca:</label>
+        <input type="text" name="marca" placeholder="Marca" required>
+      </div>
+      <div class="form-group">
+        <label for="model">Model:</label>
+        <input type="text" name="model" placeholder="Model" required>
+      </div>
+      <div class="form-group">
+        <label for="an_fabricatie">An fabricație:</label>
+        <input type="number" name="an_fabricatie" placeholder="An fabricație" required>
+      </div>
+      <div class="form-group">
+        <label for="combustibil">Combustibil:</label>
+        <input type="text" name="combustibil" placeholder="Combustibil" required>
+      </div>
+      <div class="form-group">
+        <label for="capacitate_cilindrica">Capacitate cilindrică:</label>
+        <input type="number" name="capacitate_cilindrica" placeholder="Capacitate cilindrică" required>
+      </div>
+      <div class="form-group">
+        <label for="putere">Putere (CP):</label>
+        <input type="number" name="putere" placeholder="Putere (CP)" required>
+      </div>
+      <div class="form-group">
+        <label for="cutie_viteza">Cutie de viteză:</label>
+        <input type="text" name="cutie_viteza" placeholder="Cutie de viteză" required>
+      </div>
+      <div class="form-group">
+        <label for="kilometrii_rulati">Kilometrii rulați:</label>
+        <input type="text" name="kilometrii_rulati" placeholder="Kilometrii rulați" required>
+      </div>
+      <div class="form-group">
+        <label for="transmisie">Tracțiune: (4x4, Fata, Spate)</label>
+        <input type="text" name="transmisie" placeholder="Transmisie" required>
+      </div>
+      <div class="form-group">
+        <label for="caroserie">Caroserie:</label>
+        <input type="text" name="caroserie" placeholder="Caroserie" required>
+      </div>
+      <div class="form-group">
+        <label for="numar_portiere">Număr de portiere:</label>
+        <input type="number" name="numar_portiere" placeholder="Număr de portiere" required>
+      </div>
+      <div class="form-group">
+        <label for="culoare">Culoare:</label>
+        <input type="text" name="culoare" placeholder="Culoare" required>
+      </div>
+      <div class="form-group">
+        <label for="norma_poluare">Norma de poluare:</label>
+        <input type="text" name="norma_poluare" placeholder="Norma de poluare" required>
+      </div>
+      <div class="form-group">
+        <label for="vin">VIN:</label>
+        <input type="text" name="vin" placeholder="VIN" required>
+      </div>
+      <div class="form-group">
+        <label for="price">Preț:</label>
+        <input type="number" name="price" step="0.01" placeholder="Price" required>
+      </div>
+      <div class="form-group" style="flex: 1 1 100%;">
+        <label for="description">Dotari: (SEPARATE cu VIRGULA ",")</label>
+        <textarea name="description" rows="4" placeholder="Description"></textarea>
+      </div>
+      <div class="form-group" style="flex: 1 1 100%;">
+        <label for="carImages">Incărcare Imagini:</label>
+        <input type="file" name="carImages" multiple>
+      </div>
+
+      <button type="submit">Adaugă</button>
+    </form>
+  </div>
+
 </body>
 </html>

@@ -8,89 +8,236 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* Specific styles for this page */
-    .coming-soon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 80vh; /* Match the height of main content from styles.css */
-      background-color: #000; /* Black background */
+    /* Page Background Styling */
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #121212;
+        color: #fff;
     }
-    
-    .coming-soon h1 {
-      color: #fff; /* White text */
-      font-size: 4em; /* Big text */
-      text-align: center;
+
+    /* Main Container */
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 2rem auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        padding-top: 20px;
     }
-    .info-bar{
-      background-color: #111; /* Dark background to match your theme */
-      color: #fff; /* Light text for contrast */
-      padding: 10px;
-      display: flex;
-      justify-content: space-evenly; /* Space out the two items */
-      align-items: center;
+
+    /* Box Styling */
+    .box {
+        background-color: #1f1f1f;
+        padding: 1.5rem;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
     }
-    .info-item {
-      margin: 0 10px;
-      font-size: 1rem; /* Adjust the size as needed */
+
+    .box:hover {
+        transform: scale(1.02);
     }
-    .info-item i {
-      margin-right: 5px; /* Space between the icon and text */
+
+    /* Heading Styles */
+    .box h2 {
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        color: #ff9800;
     }
-  </style>
+
+    /* Images */
+    .box img {
+        width: 100%;
+        max-width: auto;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    /* Contact Form */
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        padding: 0.8rem;
+        margin-bottom: 1rem;
+        border: none;
+        border-radius: 4px;
+        background-color: #333;
+        color: #fff;
+    }
+
+    .contact-form button {
+        padding: 0.8rem 1.5rem;
+        border: none;
+        background-color: #ff9800;
+        color: #121212;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    .contact-form button:hover {
+        background-color: red;
+    }
+    @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                width: 95%;
+            }
+
+            .box img {
+                width: 80%;
+                max-width: 250px;
+                margin: 0 auto;
+            }
+
+            .box h2 {
+                font-size: 1.2rem;
+            }
+        }
+
+</style>
 </head>
 <body>
-  <div class="info-bar">
-    <div class="info-item">
-      <i class="fas fa-phone"></i>info: +40 123 456 789
+  <div class="header-container">
+    <div class="info-bar">
+      <div class="info-item">
+        <i class="fas fa-phone"></i>Autoparc: +40 740 513 713
+      </div>
+      <div class="info-item">
+        <i class="fas fa-money-bill-wave"></i>Finanțare: +40 744 665 663
+      </div>
     </div>
-    <div class="info-item">
-      <i class="fas fa-money-bill-wave"></i>Finantare: +40 770 187 601
-    </div>
-  </div>
-
-  <!-- Navigation Bar -->
-  <header>
-    <nav>
-      <ul>
+  
+    <nav class="main-nav">
+      <picture>
+        <source srcset="/images/logo.webp" type="image/webp">
+        <img src="/images/logo.png" alt="Logo" class="logo">
+      </picture>
+      <button class="burger-menu" aria-label="Menu">☰</button>
+      <ul class="nav-links">
         <li><a href="/">Acasă</a></li>
-        <li><a href="/masini-de-vanzare">Mașini de vânzare</a></li>
+        <li><a href="/masini-de-vanzare">Mașini de Vânzare</a></li>
         <li><a href="/despre-noi">Despre noi</a></li>
         <li><a href="/finantare">Finanțare</a></li>
         <li><a href="/contact">Contact</a></li>
         <li><a href="/profesional">Profesional</a></li>
       </ul>
     </nav>
-  </header>
+  </div>
 
   <!-- Main Content -->
-  <main class="coming-soon">
-    <h1>COMING SOON</h1>
-  </main>
+ <!-- Full-width Background Image -->
+ <div class="bg-full-width"></div>
+
+ <!-- First Row -->
+ <div class="container">
+     <!-- Container 1 -->
+     <div class="box">
+         <h2>AUTOPARC</h2>
+         <p>STR. LUCIAN BLAGA, NR. 347 – 440227 Satu Mare, Romania<br>
+            Tel.: +40 740 513 713<br>
+            E-mail: autoparcrolcris@gmail.com</p>
+         <a href="https://maps.google.com/?q=STR.+LUCIAN+BLAGA+347+Satu+Mare" target="_blank">
+             <img src="/images/gm1.png" alt="Google Maps Autoparc">
+         </a>
+     </div>
+
+     <!-- Container 2 -->
+     <div class="box">
+         <h2>BIROU DE CREDIT</h2>
+         <p>Bd. I.C. BRĂTIANU NR 1, Satu Mare, Romania<br>
+            Tel.: +40 744 665 663<br>
+            E-mail: leasingrolcris@gmail.com</p>
+         <a href="https://maps.google.com/?q=Bd.+I.C.+BRATIANU+1+Satu+Mare" target="_blank">
+             <img src="/images/gm2.png" alt="Google Maps Credit Bureau">
+         </a>
+     </div>
+ </div>
+
+ <!-- Second Row -->
+ <div class="container">
+     <!-- Contact Form -->
+     <div class="box">
+         <h2>Contact Form</h2>
+         <!-- <form class="contact-form" method="POST" action="contact.php">
+             <input type="text" name="name" placeholder="Numele tău" required>
+             <input type="email" name="email" placeholder="Adresa ta de Email" required>
+             <input type="text" placeholder="Număr de contact">
+             <textarea name="message" rows="5" placeholder="Mesajul tău" required></textarea>
+             <button type="submit">TRIMITE</button>
+         </form> -->
+         <form class="contact-form" action="/contact" method="POST">
+          <input type="text" name="name" class="footer-input" placeholder="Numele tău" required>
+          <input type="email" name="email" class="footer-input" placeholder="Adresa de email" required>
+          <input type="text" name="phone" class="footer-input" placeholder="Număr de contact" required>
+          <textarea name="message" placeholder="Mesajul tău" rows="4" required></textarea>
+          <button type="submit" class="footer-btn">Trimite</button>
+        </form>
+        
+        
+     </div>
+
+     <!-- Image -->
+     <div class="box">
+         <img src="/images/dn01.webp" alt="Contact Image">
+     </div>
+ </div>
 
   <!-- Footer -->
   <footer>
     <div class="footer-content">
-      <p>© 2025 Autoprc RolCris. Toate drepturile rezervate.</p>
-      <nav>
+      <div class="footer-logo-section">
+        <img src="/images/logo.webp" alt="Logo">
+      </div>
+      <div class="footer-locatii">
+        <h3>LOCAȚII</h3>
+        <ul>
+          <li>STR. LUCIAN BLAGA, NR. 347</li>
+          <li>440227 Satu Mare, Romania</li>
+          <hr>
+          <li>ANPC</li>
+        </ul>
+        <div class="footer-anpc">
+          <a href="http://www.anpc.ro" target="_blank">
+            <img src="/images/anpc1.webp" alt="ANPC Link">
+          </a>
+          <a href="http://www.anpc.ro" target="_blank">
+            <img src="/images/anpc2.webp" alt="ANPC Link">
+          </a>
+        </div>
+      </div>
+      <div class="footer-program">
+        <h3>PROGRAM</h3>
+        <ul>
+          <li>Luni - Vineri: 9:00 – 18:00</li>
+          <li>Sâmbătă – Duminică: 9:00 - 13:00</li>
+        </ul>
+      </div>
+      <div class="footer-quick-links">
+        <h3>QUICK LINKS</h3>
         <ul>
           <li><a href="/">Acasă</a></li>
-          <li><a href="/masini-de-vanzare">Mașini de vânzare</a></li>
+          <li><a href="/masini-de-vanzare">Mașini de Vânzare</a></li>
           <li><a href="/despre-noi">Despre noi</a></li>
           <li><a href="/finantare">Finanțare</a></li>
           <li><a href="/contact">Contact</a></li>
           <li><a href="/profesional">Profesional</a></li>
-        </ul>
-      </nav>
-      <div class="finance-form">
-        <h3>Finanțare</h3>
-        <form action="/finantare" method="POST">
-          <input type="text" name="name" placeholder="Nume" required>
-          <input type="email" name="email" placeholder="Email" required>
-          <input type="tel" name="phone" placeholder="Telefon" required>
-          <button type="submit">Trimite</button>
-        </form>
+          </ul>
       </div>
+      <div class="footer-finance-form">
+        <h3>Formular de Finanțare</h3>
+    
+        <%- include('_footer') %>
+
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 Autoparc RolCris. Toate drepturile rezervate. <a href="https://sapcreation.com">by SAPCreation</a>
     </div>
   </footer>
 
@@ -98,6 +245,17 @@
   <a href="https://wa.me/your-number" class="floating-btn whatsapp" target="_blank">WhatsApp</a>
   <a href="/finantare" class="floating-btn finantare">Finanțare</a>
 
+
+  <script>
+    // Check if the query parameter 'success' exists
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('success')) {
+      alert('Thank you for your message! We will get back to you soon.');
+    } else if (urlParams.has('error')) {
+      alert('Something went wrong. Please try again later.');
+    }
+  </script>
+  
   <!-- Include JS files -->
   <script src="/js/main.js"></script>
 </body>
